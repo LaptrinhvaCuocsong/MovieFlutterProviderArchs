@@ -53,7 +53,7 @@ class HomeState extends State<Home> {
   @override
   Widget build(BuildContext context) {
     // TODO: implement build
-    return Scaffold(body: Center(child: Text(LocaleKeys.greeting).tr(),),);
+    return Scaffold(body: Center(child: Text(LocaleKeys.greeting, style: TextStyles.getStyle(30, FontFamilies.roboto, FontWeights.bold),).tr()),);
   }
 
 }
