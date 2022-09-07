@@ -1,10 +1,12 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_config/flutter_config.dart';
 import 'package:flutter_movie_provider_archs/core/utilities/utilities.dart';
 import 'package:provider/provider.dart';
 import 'package:easy_localization/easy_localization.dart';
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
+  await FlutterConfig.loadEnvVariables();
   await EasyLocalization.ensureInitialized();
   Future.delayed(Duration(seconds: 1)).then((value) => {
         runApp(EasyLocalization(

@@ -41,6 +41,20 @@ android {
         versionName flutterVersionName
     }
 
+    flavorDimensions "app"
+    productFlavors {
+ 
+        debug {
+            dimension "app"
+            applicationId "com.hungnm.movie.flutter.debug"
+        }
+ 
+        release {
+            dimension "app"
+            applicationId "com.hungnm.movie.flutter"
+        }
+    }
+
     buildTypes {
         release {
             // TODO: Add your own signing config for the release build.
