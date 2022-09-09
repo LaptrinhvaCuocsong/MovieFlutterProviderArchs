@@ -1,13 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_movie_provider_archs/core/core.dart';
 
 enum FontFamilies { roboto }
-
-String stringFromFontFamily(FontFamilies fontFamily) {
-  switch (fontFamily) {
-    case FontFamilies.roboto:
-      return 'Roboto';
-  }
-}
 
 enum FontWeights { bold, medium, regular, light }
 
@@ -29,7 +23,7 @@ class TextStyles {
       double fontSize, FontFamilies fontFamily, FontWeights fontWeight) {
     return TextStyle(
         fontSize: fontSize,
-        fontFamily: stringFromFontFamily(fontFamily),
+        fontFamily: fontFamily.name.capitalizeFirstLetter(),
         fontWeight: getFontWeight(fontWeight));
   }
 }
