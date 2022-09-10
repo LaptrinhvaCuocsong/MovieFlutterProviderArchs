@@ -1,10 +1,10 @@
 enum APIMethod { GET, POST, PUT, DELETE }
 
 abstract class UrlRequestConvertible {
-  String baseUrl();
-  APIMethod apiMethod();
-  String path();
-  Map<String, dynamic>? headers();
-  Map<String, dynamic>? parameters();
-  Map<String, dynamic> body();
+  String get baseUrl;
+  APIMethod get method;
+  String get path;
+  Map<String, dynamic>? get headers;
+  Map<String, dynamic>? get parameters;
+  Map<String, dynamic>? get body;
 }

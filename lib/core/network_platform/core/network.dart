@@ -1,9 +1,8 @@
 import 'package:dio/dio.dart';
 import 'package:flutter/foundation.dart';
 import 'package:flutter_movie_provider_archs/core/core.dart';
-import 'nw_core.dart';
 
-typedef JsonToModelHandle<T> = Result<T, Exception> Function(
+typedef JsonToModelHandle<T> = T Function(
     Map<String, dynamic>);
 
 class Network<T> {
@@ -21,12 +20,31 @@ class Network<T> {
     _dio = Dio(baseOptions);
   }
 
-  Future<void> execute(
+  Future<Result<T, Exception>> execute(
       UrlRequestConvertible request, JsonToModelHandle<T> handler) async {
-    _dio.options.baseUrl = request.baseUrl();
+    _dio.options.baseUrl = request.baseUrl;
     Options options =
-        Options(method: request.apiMethod().name, headers: request.headers());
-    Response response = await _dio.request(request.path(),
-        data: request.body(), options: options);
+        Options(method: request.method.name, headers: request.headers);
+    try {
+      Response response = await _dio.request(request.path,
+        data: request.body, options: options);
+      HttpStatusCode statusCode = HttpStatusCode(code: response.statusCode ?? -1);
+      if (statusCode.isSuccess) {
+        if (response.data != null && response.data is Map<String, dynamic>) {
+          T model = handler(response.data);
+          return Result(data: model, error: null);
+        } else {
+          return Result(data: null, error: ApiException(code: null, message: Strings.apiErrorMessage));
+        }
+      } else {
+        return Result(data: null, error: ApiException(code: statusCode.code, message: statusCode.description));
+      }
+    } catch (e) {
+      if (e is DioError) {
+        return Result(data: null, error: ApiException(code: null, message: e.message));
+      } else {
+        return Result(data: null, error: ApiException(code: null, message: Strings.apiErrorMessage));
+      }
+    }
   }
 }
