@@ -1,4 +1,4 @@
-package com.example.flutter_movie_provider_archs
+package com.hungnm.movie.flutter
 
 import io.flutter.embedding.android.FlutterActivity
 

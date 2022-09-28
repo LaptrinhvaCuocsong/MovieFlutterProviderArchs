@@ -5,6 +5,8 @@ import 'package:get_it/get_it.dart';
 import 'package:provider/provider.dart';
 import 'package:easy_localization/easy_localization.dart';
 
+import 'ui/ui.dart';
+
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
   await FlutterConfig.loadEnvVariables();
@@ -37,32 +39,9 @@ class MyApp extends StatelessWidget {
         theme: ThemeData(
           primaryColor: AppColor.primaryColor,
         ),
-        home: Home(),
+        initialRoute: "/",
+        onGenerateRoute: AppRouter.onGenerateRoute,
       ),
     );
   }
-}
-
-class Home extends StatefulWidget {
-  @override
-  State<StatefulWidget> createState() {
-    // TODO: implement createState
-    return HomeState();
-  }
-
-}
-
-class HomeState extends State<Home> {
-@override
-  void initState() {
-    // TODO: implement initState
-    super.initState();
-  }
-
-  @override
-  Widget build(BuildContext context) {
-    // TODO: implement build
-    return Scaffold(body: Center(child: Text(Strings.apiErrorMessage, style: TextStyles.getStyle(30, FontFamilies.roboto, FontWeights.bold),).tr()),);
-  }
-
 }

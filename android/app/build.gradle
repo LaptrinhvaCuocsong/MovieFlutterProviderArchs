@@ -36,6 +36,7 @@ android {
         targetSdkVersion 30
         versionCode project.env.get("VER_CODE").toInteger()
         versionName project.env.get("VER_NAME")
+        manifestPlaceholders = ["APP_NAME": project.env.get("APP_NAME")]
     }
 
     flavorDimensions "app_environment"
