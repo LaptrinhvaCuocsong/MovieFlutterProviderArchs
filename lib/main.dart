@@ -36,9 +36,7 @@ class MyApp extends StatelessWidget {
         locale: context.locale,
         supportedLocales: context.supportedLocales,
         title: 'Flutter App',
-        theme: ThemeData(
-          primaryColor: AppColor.primaryColor,
-        ),
+        theme: ThemeData(primaryColor: AppColor.primaryColor),
         initialRoute: "/",
         onGenerateRoute: AppRouter.onGenerateRoute,
       ),
