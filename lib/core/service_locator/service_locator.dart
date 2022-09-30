@@ -1,5 +1,6 @@
 import 'package:flutter_movie_provider_archs/core/core.dart';
-import 'package:get_it/get_it.dart';
+import 'package:flutter_movie_provider_archs/main.dart';
+import 'package:flutter_movie_provider_archs/ui/ui.dart';
 
 enum DependencyInstance { nwUsecaseProvider, nwMoviesUsecase }
 
@@ -8,8 +9,6 @@ class ServiceLocator {
 
   ServiceLocator._internal();
 
-  GetIt getIt = GetIt.instance;
-
   void registerDependencies() {
     _registerUseCase();
     _registerRepository();
@@ -17,21 +16,25 @@ class ServiceLocator {
   }
 
   void _registerUseCase() {
-    getIt.registerLazySingleton<UsecaseProvider>(() => NwUsecaseProvider(),
+    locator.registerLazySingleton<UsecaseProvider>(() => NwUsecaseProvider(),
         instanceName: DependencyInstance.nwUsecaseProvider.name);
 
-    getIt.registerFactory<MoviesUsecase>(
-        () => getIt<UsecaseProvider>(
+    locator.registerFactory<MoviesUsecase>(
+        () => locator<UsecaseProvider>(
                 instanceName: DependencyInstance.nwUsecaseProvider.name)
             .getMoviesUsecase(),
         instanceName: DependencyInstance.nwMoviesUsecase.name);
   }
 
   void _registerRepository() {
-    getIt.registerLazySingleton<MoviesRepository>(() => MoviesRepositoryImpl(
-        nwMoviesUsecase: getIt<MoviesUsecase>(
+    locator.registerLazySingleton<MoviesRepository>(() => MoviesRepositoryImpl(
+        nwMoviesUsecase: locator<MoviesUsecase>(
             instanceName: DependencyInstance.nwMoviesUsecase.name)));
   }
 
-  void _registerViewModel() {}
+  void _registerViewModel() {
+    locator.registerLazySingleton<TopViewModel>(() => TopViewModel());
+    locator
+        .registerLazySingleton<AppTabbarViewModel>(() => AppTabbarViewModel());
+  }
 }

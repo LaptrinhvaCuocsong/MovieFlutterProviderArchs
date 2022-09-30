@@ -4,8 +4,9 @@ import 'package:flutter_movie_provider_archs/core/core.dart';
 import 'package:get_it/get_it.dart';
 import 'package:provider/provider.dart';
 import 'package:easy_localization/easy_localization.dart';
-
 import 'ui/ui.dart';
+
+GetIt locator = GetIt.instance;
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();

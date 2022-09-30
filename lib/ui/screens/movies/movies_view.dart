@@ -4,9 +4,8 @@ class MoviesView extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      body: Center(
-        child: Text('Movies'),
-      ),
-    );
+        body: Center(
+      child: Text('Movies'),
+    ));
   }
 }

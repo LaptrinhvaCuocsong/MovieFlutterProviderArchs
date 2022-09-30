@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_movie_provider_archs/main.dart';
 import 'package:flutter_movie_provider_archs/ui/base/base_ui.dart';
-import 'package:get_it/get_it.dart';
 import 'package:provider/provider.dart';
 
 class BaseView<T extends BaseViewModel> extends StatefulWidget {
@@ -12,12 +12,12 @@ class BaseView<T extends BaseViewModel> extends StatefulWidget {
 
   @override
   State<StatefulWidget> createState() {
-    return _BaseViewState();
+    return _BaseViewState<T>();
   }
 }
 
 class _BaseViewState<T extends BaseViewModel> extends State<BaseView<T>> {
-  T viewModel = GetIt.instance.get<T>();
+  T viewModel = locator.get<T>();
 
   @override
   void initState() {
