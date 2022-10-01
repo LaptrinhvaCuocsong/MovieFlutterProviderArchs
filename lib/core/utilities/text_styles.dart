@@ -19,11 +19,12 @@ FontWeight getFontWeight(FontWeights fontWeight) {
 }
 
 class TextStyles {
-  static TextStyle getStyle(
-      double fontSize, FontFamilies fontFamily, FontWeights fontWeight) {
+  static TextStyle getStyle(double fontSize, FontFamilies fontFamily,
+      FontWeights fontWeight, {Color color = Colors.black}) {
     return TextStyle(
         fontSize: fontSize,
         fontFamily: fontFamily.name.capitalizeFirstLetter(),
-        fontWeight: getFontWeight(fontWeight));
+        fontWeight: getFontWeight(fontWeight),
+        color: color);
   }
 }

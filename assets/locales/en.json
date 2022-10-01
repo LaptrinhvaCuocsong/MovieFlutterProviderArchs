@@ -1,3 +1,4 @@
 {
-    "api_error_message": "It could not be processed normally. \nPlease try again."
+    "api_error_message": "It could not be processed normally. \nPlease try again.",
+    "movies_title": "Popular movies"
 }

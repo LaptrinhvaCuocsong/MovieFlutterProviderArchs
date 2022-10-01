@@ -4,3 +4,4 @@ export 'favorites/favorites_view.dart';
 export 'settings/settings_view.dart';
 export 'movies/movies_view.dart';
 export 'top/top.dart';
+export 'profile/profile.dart';
