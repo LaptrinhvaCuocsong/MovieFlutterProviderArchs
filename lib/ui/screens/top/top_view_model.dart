@@ -13,7 +13,7 @@ class TopViewModel extends BaseViewModel {
     notifyListeners();
   }
 
-  void setNeedShowDrawer(bool isNeedShowDrawer) {
+  void setIsNeedShowDrawer(bool isNeedShowDrawer) {
     _isNeedShowDrawer = isNeedShowDrawer;
   }
 }

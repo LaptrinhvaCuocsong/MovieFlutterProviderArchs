@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_movie_provider_archs/core/core.dart';
 import 'package:flutter_movie_provider_archs/main.dart';
 import 'package:flutter_movie_provider_archs/ui/base/base_ui.dart';
 import 'package:provider/provider.dart';
@@ -22,6 +23,7 @@ class _BaseViewState<T extends BaseViewModel> extends State<BaseView<T>> {
   @override
   void initState() {
     super.initState();
+    viewModel.widgetState = this;
     widget.onViewModelReady(viewModel);
   }
 

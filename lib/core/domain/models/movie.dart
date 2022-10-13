@@ -1,3 +1,5 @@
+import 'package:flutter_movie_provider_archs/core/core.dart';
+
 class Movie {
   bool? adult;
   String? backdropPath;
@@ -8,11 +10,11 @@ class Movie {
   String? overview;
   double? popularity;
   String? posterPath;
-  String? releaseDate;
+  String? releaseDate; // yyyy-MM-dd
   String? title;
   bool? video;
-  int? voteAverage;
-  int? voteCount;
+  double? voteAverage;
+  double? voteCount;
 
   Movie(
       {this.adult,
@@ -31,38 +33,36 @@ class Movie {
       this.voteCount});
 
   Movie.fromJson(Map<String, dynamic> json) {
-    adult = json['adult'];
-    backdropPath = json['backdrop_path'];
-    genreIds = json['genre_ids'].cast<int>();
-    id = json['id'];
-    originalLanguage = json['original_language'];
-    originalTitle = json['original_title'];
-    overview = json['overview'];
-    popularity = json['popularity'];
-    posterPath = json['poster_path'];
-    releaseDate = json['release_date'];
-    title = json['title'];
-    video = json['video'];
-    voteAverage = json['vote_average'];
-    voteCount = json['vote_count'];
+    adult = tryCast(json['adult']);
+    backdropPath = tryCast(json['backdrop_path']);
+    genreIds = tryCast<List<dynamic>>(json['genre_ids'])
+        ?.map((e) => tryCast<num>(e)?.toInt() ?? 0)
+        .toList();
+    id = tryCast<num>(json['id'])?.toInt();
+    originalLanguage = tryCast(json['original_language']);
+    originalTitle = tryCast(json['original_title']);
+    overview = tryCast(json['overview']);
+    popularity = tryCast<num>(json['popularity'])?.toDouble();
+    posterPath = tryCast(json['poster_path']);
+    releaseDate = tryCast(json['release_date']);
+    title = tryCast(json['title']);
+    video = tryCast(json['video']);
+    voteAverage = tryCast<num>(json['vote_average'])?.toDouble();
+    voteCount = tryCast<num>(json['vote_count'])?.toDouble();
   }
 
-  Map<String, dynamic> toJson() {
-    final Map<String, dynamic> data = new Map<String, dynamic>();
-    data['adult'] = this.adult;
-    data['backdrop_path'] = this.backdropPath;
-    data['genre_ids'] = this.genreIds;
-    data['id'] = this.id;
-    data['original_language'] = this.originalLanguage;
-    data['original_title'] = this.originalTitle;
-    data['overview'] = this.overview;
-    data['popularity'] = this.popularity;
-    data['poster_path'] = this.posterPath;
-    data['release_date'] = this.releaseDate;
-    data['title'] = this.title;
-    data['video'] = this.video;
-    data['vote_average'] = this.voteAverage;
-    data['vote_count'] = this.voteCount;
-    return data;
+  String? getReleaseDateFormatted(String format) {
+    if (releaseDate != null) {
+      return DateFormatter.getDateTimeFormatted(
+          releaseDate!, "yyyy-MM-dd", format);
+    }
+    return null;
+  }
+
+  String? getRatingFormatted() {
+    if (voteAverage != null) {
+      return voteAverage!.toString() + "/10";
+    }
+    return null;
   }
 }

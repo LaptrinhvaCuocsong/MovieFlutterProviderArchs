@@ -1,11 +1,12 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_movie_provider_archs/core/core.dart';
 
-class AppBarCommonWidget extends StatelessWidget implements PreferredSizeWidget {
+class AppBarCommonWidget extends StatelessWidget
+    implements PreferredSizeWidget {
   final List<Widget> leadingWidgets;
   final List<Widget> centerWidgets;
   final List<Widget> trailingWidgets;
-  final EdgeInsets _padding = EdgeInsets.fromLTRB(16, 0, 16, 8);
+  final EdgeInsets _padding = const EdgeInsets.fromLTRB(16, 0, 16, 8);
   final double _leadingSpacing = 4.0;
   final double _centerSpacing = 4.0;
   final double _trailingSpacing = 4.0;
@@ -20,9 +21,7 @@ class AppBarCommonWidget extends StatelessWidget implements PreferredSizeWidget 
   Widget build(BuildContext context) {
     return Container(
       height: heightOfAppBar,
-      decoration: BoxDecoration(
-        color: AppColor.primaryColor
-      ),
+      decoration: BoxDecoration(color: AppColor.primaryColor),
       child: Padding(
         padding: _padding,
         child: Column(
@@ -66,7 +65,7 @@ class AppBarCommonWidget extends StatelessWidget implements PreferredSizeWidget 
         mainAxisAlignment: align,
         children: widgets);
   }
-  
+
   @override
   Size get preferredSize => Size.fromHeight(heightOfAppBar);
 }

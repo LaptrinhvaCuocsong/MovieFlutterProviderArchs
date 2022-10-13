@@ -1,4 +1,4 @@
-enum APIMethod { GET, POST, PUT, DELETE }
+enum APIMethod { get, post, put, delete }
 
 abstract class UrlRequestConvertible {
   String get baseUrl;

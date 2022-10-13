@@ -1,7 +1,7 @@
 import 'package:flutter_movie_provider_archs/core/core.dart';
 
 class MoviesRepositoryImpl implements MoviesRepository {
-  MoviesUsecase nwMoviesUsecase;
+  final MoviesUsecase nwMoviesUsecase;
 
   MoviesRepositoryImpl({required this.nwMoviesUsecase});
 

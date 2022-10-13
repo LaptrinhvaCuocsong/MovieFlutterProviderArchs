@@ -6,4 +6,9 @@ class NwUsecaseProvider implements UsecaseProvider {
   MoviesUsecase getMoviesUsecase() {
     return NwMoviesUsecase(network: Network<Movies>());
   }
+
+  @override
+  MovieImageConfigUsecase getMovieImageConfigUsecase() {
+    return NwImageConfigurationUsecase(network: Network<MovieImageConfig>());
+  }
 }

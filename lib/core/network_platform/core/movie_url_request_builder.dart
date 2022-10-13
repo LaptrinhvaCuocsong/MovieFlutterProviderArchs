@@ -1,3 +1,4 @@
+import 'package:flutter_movie_provider_archs/core/core.dart';
 import 'nw_core.dart';
 
 class MovieUrlRequestBuilder implements UrlRequestConvertible {
@@ -39,7 +40,13 @@ class MovieUrlRequestBuilder implements UrlRequestConvertible {
   APIMethod get method => _method;
 
   @override
-  Map<String, dynamic>? get parameters => _parameters;
+  Map<String, dynamic>? get parameters {
+    Map<String, dynamic> params = _parameters ?? {};
+    if(!params.keys.contains('api_key')) {
+      params['api_key'] = Constants.movieDBApiKey;
+    }
+    return params;
+  }
 
   @override
   String get path => _path;
