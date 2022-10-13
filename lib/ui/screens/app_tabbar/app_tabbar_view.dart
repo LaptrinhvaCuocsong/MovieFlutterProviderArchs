@@ -27,6 +27,7 @@ class AppTabbarView extends StatelessWidget {
             controller: _tabController,
             tabBuilder: (context, index) => CupertinoTabView(
                   builder: (context) => _buildTabView(index),
+                  navigatorKey: GlobalKeys.appBarNavigatorKey,
                   onGenerateRoute: AppRouter.onGenerateRoute,
                 ));
       }),

@@ -59,6 +59,7 @@ class MyApp extends StatelessWidget {
         supportedLocales: context.supportedLocales,
         title: 'Flutter App',
         theme: ThemeData(primaryColor: AppColor.primaryColor),
+        navigatorKey: GlobalKeys.appRootNavigatorKey,
         initialRoute: RouteNames.topView,
         onGenerateRoute: AppRouter.onGenerateRoute,
       ),

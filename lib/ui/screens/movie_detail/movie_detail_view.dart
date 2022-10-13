@@ -16,7 +16,7 @@ class MovieDetailView extends StatelessWidget {
           appBar: AppBarCommonWidget(
             leadingWidgets: [
               AppBarImageActionButton(
-                  imageNamed: Images.icMenu,
+                  imageNamed: Images.icBack,
                   color: Colors.white,
                   onTapped: () {
                     Navigator.of(context).pop();
@@ -26,6 +26,9 @@ class MovieDetailView extends StatelessWidget {
               AppBarTitle(title: movie.title ?? '', color: Colors.white)
             ],
             trailingWidgets: [],
+          ),
+          body: Container(
+            child: Center(child: Text(""),),
           ),
         );
       },
