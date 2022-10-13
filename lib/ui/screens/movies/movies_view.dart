@@ -50,15 +50,17 @@ class MoviesView extends StatelessWidget {
       return ListView.builder(
           itemCount: viewModel.movies.length,
           itemBuilder: (context, index) {
-                return MovieListItemView(
-            movie: viewModel.movies[index],
-                onTap: () {
-            },
-      );
-    });
-  } else {
-  return GridView.builder(
-  itemCount: viewModel.movies.length,
+            return MovieListItemView(
+              movie: viewModel.movies[index],
+              onTap: () {
+                AppNavigator.pushFromRoot(RouteNames.movieDetail,
+                    arguments: viewModel.movies[index]);
+              },
+            );
+          });
+    } else {
+      return GridView.builder(
+          itemCount: viewModel.movies.length,
           gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
               crossAxisCount: 2,
               crossAxisSpacing: 16,
