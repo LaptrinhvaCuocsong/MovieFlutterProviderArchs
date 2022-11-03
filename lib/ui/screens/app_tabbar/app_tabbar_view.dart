@@ -27,11 +27,25 @@ class AppTabbarView extends StatelessWidget {
             controller: _tabController,
             tabBuilder: (context, index) => CupertinoTabView(
                   builder: (context) => _buildTabView(index),
-                  navigatorKey: GlobalKeys.appBarNavigatorKey,
+                  navigatorKey: _getGlobalKey(index),
                   onGenerateRoute: AppRouter.onGenerateRoute,
                 ));
       }),
     );
+  }
+
+  GlobalKey<NavigatorState> _getGlobalKey(int index) {
+    AppTabBar tabbar = AppTabBar.values[index];
+    switch (tabbar) {
+      case AppTabBar.movies:
+        return GlobalKeys.moviesRootNavigatorKey;
+      case AppTabBar.favorites:
+        return GlobalKeys.favoritesRootNavigatorKey;
+      case AppTabBar.settings:
+        return GlobalKeys.settingsRootNavigatorKey;
+      case AppTabBar.about:
+        return GlobalKeys.aboutRootNavigatorKey;
+    }
   }
 
   Widget _buildTabView(int index) {

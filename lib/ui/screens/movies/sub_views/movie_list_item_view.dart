@@ -133,7 +133,7 @@ class MovieListItemView extends StatelessWidget {
                       SizedBox(height: 6),
                       Text(
                         movie.overview ?? '',
-                        maxLines: 4,
+                        maxLines: 40,
                         style: TextStyles.getStyle(
                             12, FontFamilies.roboto, FontWeights.regular,
                             overflow: TextOverflow.ellipsis),
