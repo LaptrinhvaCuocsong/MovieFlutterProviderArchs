@@ -32,7 +32,6 @@ void main() async {
   FlutterNativeSplash.preserve(widgetsBinding: widgetsBinding);
 
   Future.delayed(Duration(seconds: 3)).then((value) {
-    FlutterNativeSplash.remove();
     runApp(EasyLocalization(
       child: MyApp(),
       supportedLocales: [Locale('en'), Locale('vi')],
@@ -41,6 +40,7 @@ void main() async {
       useOnlyLangCode: true,
       useFallbackTranslations: true,
     ));
+    FlutterNativeSplash.remove();
   });
 }
 
